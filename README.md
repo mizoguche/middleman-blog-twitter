@@ -53,7 +53,7 @@ $ middleman tweet
 
 then
 
-> updated: \<latest article title\> \<latest article url\>
+> Blog updated: \<latest article title\> \<latest article url\>
 
 ## Contributing
 
