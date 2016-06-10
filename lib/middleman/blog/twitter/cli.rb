@@ -1,9 +1,10 @@
-require 'middleman-core/cli'
-require "middleman/blog/twitter/updater"
+require 'middleman/blog/twitter/updater'
+require 'middleman-blog/uri_templates'
+require 'thor'
 
 module Middleman
   module Cli
-    class Twitter < Thor
+    class Twitter < ::Thor
       include Thor::Actions
       include Middleman::Blog::UriTemplates
 
