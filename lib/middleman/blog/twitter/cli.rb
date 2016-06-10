@@ -1,6 +1,3 @@
-require 'middleman/blog/twitter/updater'
-require 'middleman-blog/uri_templates'
-require 'thor'
 
 module Middleman
   module Cli

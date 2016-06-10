@@ -21,7 +21,8 @@ module Middleman
           erb = ERB.new(read_template)
           tweet = erb.result(binding)
 
-          @client.update(tweet)
+          # @client.update(tweet)
+          p tweet
         end
 
         def read_template
