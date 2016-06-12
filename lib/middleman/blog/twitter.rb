@@ -13,7 +13,7 @@ module Middleman
           @app ||= ::Middleman::Application.new
 
           blog_extension = @app.extensions[:blog].values.first
-          latest_article = blog_extension.data.articles.first
+          latest_article = blog_extension.data.articles.select{ |a| a.published? }.first
           hostname = settings.hostname
 
           erb = ERB.new(read_template)
