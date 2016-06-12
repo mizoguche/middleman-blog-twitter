@@ -1,15 +1,23 @@
 require 'middleman-core'
+require 'middleman/blog/twitter'
 
-class MiddlemanBlogTwitter < ::Middleman::Extension
-  option :my_option, 'default', 'An example option'
+module Middleman
+  module Blog
+    class TwitterExtension < ::Middleman::Extension
+      option :consumer_key, nil, 'Twitter consumer key'
+      option :consumer_secret, nil, 'Twitter consumer secret'
+      option :access_token, nil, 'Twitter access token'
+      option :access_token_secret, nil, 'Twitter access token secret'
+      option :hostname, nil, 'Your site hostname'
+      option :template_path, 'tweet_template.txt.erb', 'Tweet template path'
 
-  def initialize(app, options_hash={}, &block)
-    super
+      attr_reader :options
 
-    # Require libraries only when activated
-    # require 'necessary/library'
+      def initialize(app, options_hash={}, &block)
+        super
 
-    # set up your extension
-    # puts options.my_option
+        @options = options
+      end
+    end
   end
 end

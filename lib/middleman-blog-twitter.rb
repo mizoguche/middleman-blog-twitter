@@ -1,6 +1,8 @@
-require "middleman-core"
+require 'middleman-core'
+require 'middleman-blog-twitter/commands'
+require 'middleman/blog/twitter'
 
-Middleman::Extensions.register :middleman-blog-twitter do
+Middleman::Extensions.register :blog_twitter do
   require "middleman-blog-twitter/extension"
-  MiddlemanBlogTwitter
+  ::Middleman::Blog::TwitterExtension
 end

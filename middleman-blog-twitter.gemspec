@@ -1,5 +1,6 @@
 # coding: utf-8
-$:.push File.expand_path("../lib", __FILE__)
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'middleman/blog/twitter/version'
 
 Gem::Specification.new do |spec|
@@ -18,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency('middleman-core', ['>= 4.1.9'])
-  spec.add_runtime_dependency('middleman-cli', ['>= 4.1.9'])
+  spec.add_runtime_dependency('middleman-cli')
   spec.add_runtime_dependency('middleman-blog', '~> 4.0.1')
   spec.add_runtime_dependency('twitter', '~> 5.13')
   spec.add_runtime_dependency('thor', ['>= 0.17.0', '< 2.0'])
