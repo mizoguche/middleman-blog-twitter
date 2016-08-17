@@ -43,6 +43,7 @@ activate :blog_twitter do |twitter|
   twitter.access_token_secret = 'YOUR ACCESS TOKEN SECRET'
   twitter.hostname            = 'http://example.com' # your blog hostname
   twitter.template_path       = 'tweet_template.txt.erb'
+  twitter.tweet_if_new        = true # If true, tweet if date of latest article is within 1 day. If false, tweet anyway. (Default: true)
 end
 ```
 
