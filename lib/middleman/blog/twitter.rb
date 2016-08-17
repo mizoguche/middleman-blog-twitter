@@ -2,6 +2,8 @@ require 'middleman/blog/twitter/version'
 require 'middleman-blog-twitter'
 require 'middleman-blog-twitter/extension'
 require 'twitter'
+require 'active_support'
+require 'active_support/core_ext'
 
 module Middleman
   module Blog
@@ -14,8 +16,9 @@ module Middleman
 
           blog_extension = @app.extensions[:blog].values.first
           latest_article = blog_extension.data.articles.select{ |a| a.published? }.first
-          hostname = settings.hostname
+          return unless should_tweet(latest_article)
 
+          hostname = settings.hostname
           erb = ERB.new(read_template)
           tweet = erb.result(binding)
           client.update(tweet)
@@ -43,6 +46,11 @@ module Middleman
         def read_template
           file = File.open(settings.template_path, 'r')
           file.read
+        end
+
+        def should_tweet(latest_article)
+          true unless settings.tweet_if_new
+          (latest_article.date >= DateTime.now.ago(1.day)) && latest_article.published?
         end
       end
     end
