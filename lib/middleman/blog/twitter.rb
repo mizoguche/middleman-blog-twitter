@@ -2,8 +2,6 @@ require 'middleman/blog/twitter/version'
 require 'middleman-blog-twitter'
 require 'middleman-blog-twitter/extension'
 require 'twitter'
-require 'active_support'
-require 'active_support/core_ext'
 
 module Middleman
   module Blog
@@ -49,8 +47,8 @@ module Middleman
         end
 
         def should_tweet(latest_article)
-          true unless settings.tweet_if_new
-          (latest_article.date >= DateTime.now.ago(1.day)) && latest_article.published?
+          true if settings.force_tweet
+          (latest_article.date > DateTime.now.ago(settings.new_article_threshold)) && latest_article.published?
         end
       end
     end
