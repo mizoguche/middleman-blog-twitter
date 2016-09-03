@@ -37,13 +37,14 @@ On `config.rb`
 
 ```ruby
 activate :blog_twitter do |twitter|
-  twitter.consumer_key        = 'YOUR CONSUMER KEY'
-  twitter.consumer_secret     = 'YOUR CONSUMER SECRET'
-  twitter.access_token        = 'YOUR ACCESS TOKEN'
-  twitter.access_token_secret = 'YOUR ACCESS TOKEN SECRET'
-  twitter.hostname            = 'http://example.com' # your blog hostname
-  twitter.template_path       = 'tweet_template.txt.erb'
-  twitter.tweet_if_new        = true # If true, tweet if date of latest article is within 1 day. If false, tweet anyway. (Default: true)
+  twitter.consumer_key          = 'YOUR CONSUMER KEY'
+  twitter.consumer_secret       = 'YOUR CONSUMER SECRET'
+  twitter.access_token          = 'YOUR ACCESS TOKEN'
+  twitter.access_token_secret   = 'YOUR ACCESS TOKEN SECRET'
+  twitter.hostname              = 'http://example.com' # your blog hostname
+  twitter.template_path         = 'tweet_template.txt.erb'
+  twitter.force_tweet           = false  # If true, tweet regardless of the date of latest article. (Default: false)
+  twitter.new_article_threshold = 1.hour # Tweet if date of latest article newer than threshold. (Default: 1.hour)
 end
 ```
 

@@ -1,5 +1,7 @@
 require 'middleman-core'
 require 'middleman/blog/twitter'
+require 'active_support'
+require 'active_support/core_ext'
 
 module Middleman
   module Blog
@@ -10,7 +12,8 @@ module Middleman
       option :access_token_secret, nil, 'Twitter access token secret'
       option :hostname, nil, 'Your site hostname'
       option :template_path, 'tweet_template.txt.erb', 'Tweet template path'
-      option :tweet_if_new, true, 'Tweet if latest article written in a day'
+      option :force_tweet, false, 'If true, tweet regardless of the date of latest article'
+      option :new_article_threshold, 1.hour, 'Threshold if latest article'
 
       attr_reader :options
 
